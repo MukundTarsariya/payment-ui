@@ -1,0 +1,20 @@
+.container {
+  margin: 20px;
+  padding: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.search-field {
+  width: 300px;
+  margin-left: auto;
+}
+
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

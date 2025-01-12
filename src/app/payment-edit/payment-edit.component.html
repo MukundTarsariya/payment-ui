@@ -1,0 +1,27 @@
+<mat-card *ngIf="payment" class="payment-edit">
+  <mat-card-title>Edit Payment</mat-card-title>
+  <mat-card-content [formGroup]="paymentForm">
+    <mat-form-field>
+      <mat-label>Due Amount</mat-label>
+      <input matInput formControlName="due_amount" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="payee_due_date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="payee_payment_status">
+        <mat-option value="pending">Pending</mat-option>
+        <mat-option value="due_now">Due Now</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <input type="file" (change)="onFileSelected($event)" *ngIf="paymentForm.value.payee_payment_status === 'completed'">
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="saveChanges()">Save</button>
+  </mat-card-actions>
+</mat-card>

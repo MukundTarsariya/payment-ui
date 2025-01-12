@@ -1,0 +1,13 @@
+<mat-card *ngIf="payment" class="payment-details">
+    <mat-card-title>Payment Details</mat-card-title>
+    <mat-card-content>
+      <p><strong>First Name:</strong> {{ payment.payee_first_name }}</p>
+      <p><strong>Last Name:</strong> {{ payment.payee_last_name }}</p>
+      <p><strong>Email:</strong> {{ payment.payee_email }}</p>
+      <p><strong>Phone:</strong> {{ payment.payee_phone_number }}</p>
+      <p><strong>Address:</strong> {{ payment.payee_address_line_1 }}, {{ payment.payee_city }}, {{ payment.payee_country }}</p>
+      <p><strong>Status:</strong> {{ payment.payee_payment_status }}</p>
+      <p><strong>Total Due:</strong> {{ payment.total_due | currency }}</p>
+      <p><strong>Due Date:</strong> {{ payment.payee_due_date | date }}</p>
+    </mat-card-content>
+  </mat-card>

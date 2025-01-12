@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PaymentViewComponent implements OnInit {
   payment: Payment | null = null;
-  private apiUrl = 'http://127.0.0.1:8000/payments';
+  private apiUrl = 'https://payment-2meh.onrender.com/payments';
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 

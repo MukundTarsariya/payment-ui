@@ -33,7 +33,7 @@ export class PaymentEditComponent implements OnInit {
   paymentForm: FormGroup;
   payment: Payment | null = null;
   evidenceFile: File | null = null;
-  private apiUrl = 'http://127.0.0.1:8000/payments';
+  private apiUrl = 'https://payment-2meh.onrender.com/payments';
 
   constructor(
     private route: ActivatedRoute,

@@ -41,7 +41,7 @@ export class PaymentListComponent implements OnInit {
   currentPage = 0;
   pageSize = 10;
 
-  private apiUrl = 'http://127.0.0.1:8000/payments';
+  private apiUrl = 'https://payment-2meh.onrender.com/payments';
 
   constructor(private http: HttpClient, private router: Router, public dialog: MatDialog) {}
 

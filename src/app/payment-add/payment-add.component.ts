@@ -41,7 +41,7 @@ export class PaymentAddComponent {
   currencies: string[] = ['USD', 'EUR', 'GBP'];
   filteredCurrencies: Observable<string[]>;
 
-  private apiUrl = 'http://127.0.0.1:8000/payments';
+  private apiUrl = 'https://payment-2meh.onrender.com/payments';
 
   constructor(
     private fb: FormBuilder,

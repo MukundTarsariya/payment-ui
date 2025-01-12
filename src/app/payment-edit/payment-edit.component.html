@@ -4,12 +4,14 @@
     <mat-form-field>
       <mat-label>Due Amount</mat-label>
       <input matInput formControlName="due_amount" type="number">
+      <mat-error *ngIf="paymentForm.get('due_amount')?.hasError('required')">Due Amount is required</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Due Date</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="payee_due_date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="paymentForm.get('payee_due_date')?.hasError('required')">Due Date is required</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Status</mat-label>
@@ -18,6 +20,42 @@
         <mat-option value="due_now">Due Now</mat-option>
         <mat-option value="completed">Completed</mat-option>
       </mat-select>
+      <mat-error *ngIf="paymentForm.get('payee_payment_status')?.hasError('required')">Status is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address Line 1</mat-label>
+      <input matInput formControlName="payee_address_line_1">
+      <mat-error *ngIf="paymentForm.get('payee_address_line_1')?.hasError('required')">Address is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput [matAutocomplete]="autoCity" formControlName="payee_city">
+      <mat-autocomplete #autoCity="matAutocomplete">
+        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+          {{ city }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="paymentForm.get('payee_city')?.hasError('required')">City is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Country</mat-label>
+      <input matInput [matAutocomplete]="autoCountry" formControlName="payee_country">
+      <mat-autocomplete #autoCountry="matAutocomplete">
+        <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+          {{ country }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="paymentForm.get('payee_country')?.hasError('required')">Country is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <input matInput [matAutocomplete]="autoCurrency" formControlName="currency">
+      <mat-autocomplete #autoCurrency="matAutocomplete">
+        <mat-option *ngFor="let currency of filteredCurrencies | async" [value]="currency">
+          {{ currency }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="paymentForm.get('currency')?.hasError('required')">Currency is required</mat-error>
     </mat-form-field>
     <input type="file" (change)="onFileSelected($event)" *ngIf="paymentForm.value.payee_payment_status === 'completed'">
   </mat-card-content>
